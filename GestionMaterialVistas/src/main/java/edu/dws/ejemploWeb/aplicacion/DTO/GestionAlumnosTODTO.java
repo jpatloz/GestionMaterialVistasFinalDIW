@@ -5,17 +5,16 @@ import java.util.ArrayList;
 import edu.dws.ejemploWeb.aplicacion.dal.GestionAlumnos;
 
 /*
- * Clase que usaremos para recoger los datos de alumno y
- * de la lista que contiene todos los alumnos con los datos que queremos
- * @author Jmenabc
+ * Clase que usaremos para recoger los datos de alumno y de la lista que contiene todos los alumnos para usarlo en el controlador
  */
+
 public class GestionAlumnosTODTO {
 
-	public static GestionAlumnosDTO gestionAlumnosTODTO(GestionAlumnos gestionALumnos) {
-		GestionAlumnosDTO gestionALumnosDTO = new GestionAlumnosDTO(gestionALumnos.getId_alumno(),
-				gestionALumnos.getMd_date(),gestionALumnos.getNombre_alumno(), gestionALumnos.getApellidos_alumno(),
-				gestionALumnos.getNum_telefono(),gestionALumnos.getOrdenadores());
-		return gestionALumnosDTO;
+	public static GestionAlumnosDTO gestionAlumnosTODTO(GestionAlumnos gestionAlumnos) {
+		GestionAlumnosDTO gestionAlumnosDTO = new GestionAlumnosDTO(gestionAlumnos.getId_alumno(),
+				gestionAlumnos.getMd_date(), gestionAlumnos.getNombre_alumno(), gestionAlumnos.getApellidos_alumno(),
+				gestionAlumnos.getNum_telefono(), gestionAlumnos.getOrdenadores());
+		return gestionAlumnosDTO;
 	}
 
 	public static ArrayList<GestionAlumnosDTO> listaGestionAlumnosDTO(ArrayList<GestionAlumnos> gestionALumnos) {

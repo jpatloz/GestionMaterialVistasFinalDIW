@@ -3,9 +3,7 @@ package edu.dws.ejemploWeb.aplicacion.DTO;
 import edu.dws.ejemploWeb.aplicacion.dal.GestionOrdenadores;
 
 /*
- * Clase que usaremos para recoger los datos del ordenador que
- * queremos
- * @author Jmenabc
+ * Clase que usaremos para recoger los datos del ordenador que necesitamos en el controlador
  */
 public class GestionOrdenadoresTODTO {
 

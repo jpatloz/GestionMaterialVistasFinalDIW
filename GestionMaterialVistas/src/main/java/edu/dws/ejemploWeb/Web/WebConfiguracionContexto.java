@@ -7,6 +7,10 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+/*
+ * Se utiliza para fijar donde se manda nuestra vista y que sufijo tienen nuestras vistas
+ */
+
 @Configuration
 @EnableWebMvc
 @ComponentScan

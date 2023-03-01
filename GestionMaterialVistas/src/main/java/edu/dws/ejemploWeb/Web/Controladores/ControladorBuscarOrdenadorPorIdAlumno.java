@@ -1,10 +1,5 @@
 package edu.dws.ejemploWeb.Web.Controladores;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,20 +18,27 @@ import edu.dws.ejemploWeb.aplicacion.dal.GestionOrdenadores;
 
 @Controller
 public class ControladorBuscarOrdenadorPorIdAlumno {
-	
-		// Creamos una instancia de nuestro servicio consukltas para hacer el insert
-		@Autowired
-		Consultas consulta;
-		
-		ADaoServicioImpl aDao = new ADaoServicioImpl();
-		GestionOrdenadoresTODTO aDto = new GestionOrdenadoresTODTO();
-		
-		@RequestMapping(value = "/guardarOrdenadorPorIdAlumno", method = RequestMethod.POST)
-		public ModelAndView guardarPcPorIdAlumno(@ModelAttribute("id") GestionAlumnosDTO id, Model model) {
-			GestionAlumnos gestionAlumnos = aDao.GestionAlumnosDTOADAO(id);
-			GestionOrdenadores gestionOrdenadores = consulta.buscarOrdenadorPorIdAlumno(gestionAlumnos.getId_alumno());
-			GestionOrdenadoresDTO gestionOrdenadoresDTO = aDto.gestionOrdenadoresTODTO(gestionOrdenadores);
-			model.addAttribute("ordenador", gestionOrdenadoresDTO);
-			return new ModelAndView("ordenadorEncontrado");
-		}
+
+	// Inyectamos el servicio
+	@Autowired
+	Consultas consulta;
+
+	ADaoServicioImpl aDao = new ADaoServicioImpl();
+	GestionOrdenadoresTODTO aDto = new GestionOrdenadoresTODTO();
+
+	// Utilizamos el método Post y ModelAttribute para enviar la información al formulario de la vista
+	@RequestMapping(value = "/guardarOrdenadorPorIdAlumno", method = RequestMethod.POST)
+	public ModelAndView guardarPcPorIdAlumno(@ModelAttribute("id") GestionAlumnosDTO id, Model model) {
+
+		// Pasamos a dao
+		GestionAlumnos gestionAlumnos = aDao.GestionAlumnosDTOADAO(id);
+
+		// LLamamos a la consulta para buscar el ordenador por id de alumno
+		GestionOrdenadores gestionOrdenadores = consulta.buscarOrdenadorPorIdAlumno(gestionAlumnos.getId_alumno());
+
+		// Una vez recogida la información, pasamos a DTO para enviarlo a la vista
+		GestionOrdenadoresDTO gestionOrdenadoresDTO = aDto.gestionOrdenadoresTODTO(gestionOrdenadores);
+		model.addAttribute("ordenador", gestionOrdenadoresDTO);
+		return new ModelAndView("ordenadorEncontrado");
+	}
 }

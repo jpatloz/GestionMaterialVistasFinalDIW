@@ -42,7 +42,7 @@ public class Consultas{
 		
 		public GestionOrdenadores buscarOrdenadorPorId(long id) {
 			try {
-			GestionOrdenadores gestionOrdenadores = gos.findById(id).get();
+			GestionOrdenadores gestionOrdenadores = gos.findById(id).get(); //Se usa el get para coger el objeto ordenador
 			return gestionOrdenadores;
 			}catch(Exception e) {
 				System.out.println(e);

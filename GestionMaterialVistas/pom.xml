@@ -5,6 +5,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
+  <!-- ********************************* Build ************************************* -->
+  
   <build>
 		<plugins>
 			<plugin>
@@ -20,6 +22,8 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<!-- ********************************* Properties ************************************* -->
 
 	<properties>
 		<org.springframework.version>5.0.6.RELEASE</org.springframework.version>

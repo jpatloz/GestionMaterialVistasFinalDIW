@@ -25,26 +25,31 @@ import edu.dws.ejemploWeb.aplicacion.dal.GestionOrdenadores;
 @Controller
 public class ControladorTodosLosAlumnos {
 
-	// Creamos una instancia de nuestro servicio consukltas para hacer el insert
+	// Inyectamos el servicio
 	@Autowired
 	Consultas consulta;
+
+	// Creamos un map para almacenar la clave alumnos y en el valor la lista de alumnos
 	Map<String, Object> miModelo = new HashMap<String, Object>();
+
 	ADaoServicioImpl aDao = new ADaoServicioImpl();
 	GestionAlumnosTODTO aDto = new GestionAlumnosTODTO();
 
-	// En este caso usamos el método get porque necesitamos cargar la lista en este
-	// controlador, ya que
-	// es la función perteneciente a la vista
+	// En este caso usamos el método get porque necesitamos cargar la lista en este controlador, ya que es la función perteneciente a la vista
 
 	@RequestMapping(value = "/buscarTodosLosAlumnos", method = RequestMethod.GET)
 	public ModelAndView buscarTodosLosAlumnos() {
+
+		// Creamos una lista de alumnos
 		ArrayList<GestionAlumnosDTO> listaGestionAlumnos = (ArrayList<GestionAlumnosDTO>) consulta.buscarAlumnos();
 		miModelo.put("alumnos", listaGestionAlumnos);
 		return new ModelAndView("buscarTodosLosAlumnos", "miModelo", miModelo);
 	}
 
 	@RequestMapping(value = "/eliminarAlumno")
-	public ModelAndView eliminarAlumno(@RequestParam long id_alumno) {
+	public ModelAndView eliminarAlumno(@RequestParam long id_alumno) {// Usamos el RequestParam para parametrizar el id
+
+		// LLamamos a la consulta para eliminar por id
 		consulta.eliminarUnAlumno(id_alumno);
 		return new ModelAndView("buscarTodosLosAlumnos");
 	}

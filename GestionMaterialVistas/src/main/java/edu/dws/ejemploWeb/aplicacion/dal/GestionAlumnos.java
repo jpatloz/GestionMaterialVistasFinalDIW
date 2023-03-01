@@ -12,7 +12,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity //Se indica que es una entidad para que se construya en la base de datos
+/*
+ * Clase de la tabla de alumnos
+ * Se define el nombre del esquema, de la tabla, y los campos de la base de datos
+ */
+
+@Entity
 @Table(name = "alu_tch_gestion", schema = "dlk_gmt_alu_ord")
 public class GestionAlumnos {
 

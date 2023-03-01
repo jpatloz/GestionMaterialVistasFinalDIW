@@ -1,10 +1,6 @@
 package edu.dws.ejemploWeb.Web.Controladores;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +13,36 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.dws.ejemploWeb.Web.servicios.Consultas;
 import edu.dws.ejemploWeb.aplicacion.DTO.ADaoServicioImpl;
 import edu.dws.ejemploWeb.aplicacion.DTO.GestionOrdenadoresDTO;
-import edu.dws.ejemploWeb.aplicacion.dal.GestionAlumnos;
 import edu.dws.ejemploWeb.aplicacion.dal.GestionOrdenadores;
+
+/*
+ * Controlador para la inserción de ordenadores
+ */
 
 @Controller
 public class ControladorInsertarOrdenador {
-	
-	// Creamos una instancia de nuestro servicio consukltas para hacer el insert
-	
-		@Autowired
-		Consultas consulta;
-		//Instanciamos nuestra clase aDao para poder subir los datos a bbdd
-		ADaoServicioImpl aDao = new ADaoServicioImpl();
 
-		@RequestMapping(value = "/guardarOrdenador", method = RequestMethod.POST)
-		public ModelAndView guardarOrdenador(@ModelAttribute("ordenadorInsertado") GestionOrdenadoresDTO ordenadorInsertado){
-			GestionOrdenadores gestionOrdenadores = aDao.GestionOrdenadoresDTOADAO(ordenadorInsertado);
-			gestionOrdenadores.setMd_uuid(UUID.randomUUID().toString());
-			gestionOrdenadores.setMd_date(Calendar.getInstance());
-			consulta.insertarUnOrdenador(gestionOrdenadores);
-			return new ModelAndView("ordenadorInsertado");
-		}
+	// Inyectamos el servicio
+	@Autowired
+	Consultas consulta;
+
+	// Instanciamos nuestra clase aDao para poder interactuar con la base de datos
+	ADaoServicioImpl aDao = new ADaoServicioImpl();
+
+	// Utilizamos el método Post y ModelAttribute para enviar la información al formulario de la vista
+	@RequestMapping(value = "/guardarOrdenador", method = RequestMethod.POST)
+	public ModelAndView guardarOrdenador(
+			@ModelAttribute("ordenadorInsertado") GestionOrdenadoresDTO ordenadorInsertado) {
+
+		// Pasamos de DTO a DAO
+		GestionOrdenadores gestionOrdenadores = aDao.GestionOrdenadoresDTOADAO(ordenadorInsertado);
+
+		// Añadimos los valores de md_uuid y md_date antes de insertarlos
+		gestionOrdenadores.setMd_uuid(UUID.randomUUID().toString());
+		gestionOrdenadores.setMd_date(Calendar.getInstance());
+
+		// Realizamos la consulta
+		consulta.insertarUnOrdenador(gestionOrdenadores);
+		return new ModelAndView("ordenadorInsertado");
+	}
 }
