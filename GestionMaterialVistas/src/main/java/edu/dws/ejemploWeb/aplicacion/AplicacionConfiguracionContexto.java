@@ -1,6 +1,7 @@
 package edu.dws.ejemploWeb.aplicacion;
 
 import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,17 @@ import edu.dws.ejemploWeb.aplicacion.dal.GestionAlumnos;
 
 @Configuration
 @ComponentScan
-@PropertySource("classpath:application.properties") //Esta anotación indica el archivo donde se define las propiedades del contexto
-@EnableJpaRepositories("edu.dws.ejemploWeb.aplicacion.dal") //esta anotación escanea el paquete para que se permita usar jpa
+@PropertySource("classpath:application.properties") // Esta anotación indica el archivo donde se define las propiedades del contexto
+@EnableJpaRepositories("edu.dws.ejemploWeb.aplicacion.dal") // esta anotación escanea el paquete para que se permita usar jpa
+
 public class AplicacionConfiguracionContexto {
-	
-	//Esta inyección nos permite acceder a las propiedades y variables de entorno en tiempo de ejecución
+
+	// Esta inyección nos permite acceder a las propiedades y variables de entorno en tiempo de ejecución
 	@Autowired
 	private Environment contextoPropiedades;
 
-	//En este bean se inyectan las propiedades de nuestra base de datos, previamente definidas en el archivo properties
-	
+	// En este bean se inyectan las propiedades de nuestra base de datos, previamente definidas en el archivo properties
+
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -39,16 +41,17 @@ public class AplicacionConfiguracionContexto {
 		dataSource.setPassword(contextoPropiedades.getProperty("db.password"));
 		return dataSource;
 	}
-
-	//En este bean se inyectan las propiedades de hibernatejpa previamente definidas en el archivo properties
 	
+	// En este bean se inyectan las propiedades de hibernatejpa previamente definidas en el archivo properties
+
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-		emf.setPackagesToScan(GestionAlumnos.class.getPackage().getName()); //Escaneamos uno de los paquetes de nuestro dao
+		emf.setDataSource(dataSource());
+		emf.setPackagesToScan(GestionAlumnos.class.getPackage().getName());
 
-		//Inyectamos las propiedades de hibernate
+		// Inyectamos las propiedades de hibernate
 		
 		HibernateJpaVendorAdapter hibernateJpa = new HibernateJpaVendorAdapter();
 		hibernateJpa.setDatabase(Database.POSTGRESQL);
@@ -66,7 +69,7 @@ public class AplicacionConfiguracionContexto {
 		return emf;
 	}
 
-	//Esta implementación se utiliza para gestionar las transacciones de JPA 
+	// Esta implementación se utiliza para gestionar las transacciones de JPA 
 	
 	@Bean
 	public JpaTransactionManager transactionManager() {
