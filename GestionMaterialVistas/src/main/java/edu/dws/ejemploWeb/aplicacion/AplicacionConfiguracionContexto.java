@@ -22,8 +22,7 @@ import edu.dws.ejemploWeb.aplicacion.dal.GestionAlumnos;
 @Configuration
 @ComponentScan
 @PropertySource("classpath:application.properties") // Esta anotación indica el archivo donde se define las propiedades del contexto
-@EnableJpaRepositories("edu.dws.ejemploWeb.aplicacion.dal") // esta anotación escanea el paquete para que se permita usar jpa
-
+@EnableJpaRepositories("edu.dws.ejemploWeb.aplicacion.dal") // esta anotación escanea el paquete donde se encuentras los repositorios
 public class AplicacionConfiguracionContexto {
 
 	// Esta inyección nos permite acceder a las propiedades y variables de entorno en tiempo de ejecución

@@ -52,7 +52,7 @@ public class ControladorTodosLosAlumnos {
 	}
 
 	@RequestMapping(value = "/eliminarAlumno")
-	public ModelAndView eliminarAlumno(@RequestParam long id_alumno) {// Usamos el RequestParam para parametrizar el id
+	public ModelAndView eliminarAlumno(@RequestParam long id_alumno) {
 		
 		try {
 			

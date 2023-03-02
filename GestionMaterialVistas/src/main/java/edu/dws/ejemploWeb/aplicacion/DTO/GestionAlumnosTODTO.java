@@ -17,10 +17,10 @@ public class GestionAlumnosTODTO {
 		return gestionAlumnosDTO;
 	}
 
-	public static ArrayList<GestionAlumnosDTO> listaGestionAlumnosDTO(ArrayList<GestionAlumnos> gestionALumnos) {
+	public static ArrayList<GestionAlumnosDTO> listaGestionAlumnosDTO(ArrayList<GestionAlumnos> gestionAlumnos) {
 		ArrayList<GestionAlumnosDTO> listaAlumnos = new ArrayList<GestionAlumnosDTO>();
-		for (GestionAlumnos gestionALum : gestionALumnos) {
-			listaAlumnos.add(gestionAlumnosTODTO(gestionALum));
+		for (GestionAlumnos gestionAlum : gestionAlumnos) {
+			listaAlumnos.add(gestionAlumnosTODTO(gestionAlum));
 		}
 		return listaAlumnos;
 	}

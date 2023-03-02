@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ordenador encontrado</title>
+<title>Ordenador</title>
 </head>
 <body>
-	<h1>Ordenador encontrado</h1>
+	<h1>Ordenador</h1>
 	<b>Id: </b>
 	<p>${ordenador.id_ordenador}</p>
 	<b>Modelo: </b>
@@ -17,7 +17,6 @@
 	<br>
 	<br>
 		<p>
-            Mensaje del controlador: 
             <c:out value="${miModelo.Mensaje}" />
         </p>
 

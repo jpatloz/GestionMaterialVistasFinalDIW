@@ -34,7 +34,6 @@ public class Consultas{
 			gas.save(gestionAlumnos);
 			}catch(Exception e) {
 				System.out.println(e);
-				System.out.println("No ha sido posible insertar el alumno");
 			}
 		}
 		
@@ -46,7 +45,6 @@ public class Consultas{
 			return gestionOrdenadores;
 			}catch(Exception e) {
 				System.out.println(e);
-				System.out.println("El ordenador no existe");
 				return null;
 			}
 		}
@@ -60,7 +58,6 @@ public class Consultas{
 			return listaGestionAlumnosDTO;
 			}catch(Exception e) {
 				System.out.println(e);
-				System.out.println("No se encuentra ningún alumno");
 				return null;
 			}
 	    }
@@ -72,7 +69,6 @@ public class Consultas{
 			gas.deleteById(id);
 			}catch(Exception e) {
 				System.out.println(e);
-				System.out.println("No se encuentra el id del alumno a eliminar");
 			}
 		}
 		
@@ -85,7 +81,6 @@ public class Consultas{
 			return alumno;
 			}catch(Exception e) {
 				System.out.println(e);
-				System.out.println("No se encuentra el id seleccionado");
 				return null;
 			}
 		}
@@ -102,7 +97,6 @@ public class Consultas{
 			return ordenadores;
 			}catch(Exception e) {
 				System.out.println(e);
-				System.out.println("No se encuentra el id seleccionado");
 				return null;
 			}
 		}
@@ -114,7 +108,6 @@ public class Consultas{
 			gos.save(gestionOrdenadores);
 			}catch(Exception e) {
 				System.out.println(e);
-				System.out.println("No ha sido posible insertar el ordenador");
 			}
 		}
 }

@@ -6,7 +6,7 @@
 <title></title>
 </head>
 <body>
-	<h1> Mensaje del controlador: <c:out value="${miModelo.Mensaje}" /></h1>
+	<h1><c:out value="${miModelo.Mensaje}" /></h1>
 	
 	<br>
 	<br>

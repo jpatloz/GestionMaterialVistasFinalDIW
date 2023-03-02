@@ -15,7 +15,6 @@
 	<br>
 	<br>
 		<p>
-            Mensaje del controlador: 
             <c:out value="${miModelo.Mensaje}" />
         </p>
 	<br>

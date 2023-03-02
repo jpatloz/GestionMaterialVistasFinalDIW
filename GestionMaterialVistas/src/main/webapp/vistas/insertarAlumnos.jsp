@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Formulario</title>
+<title>Crear ordenador</title>
 </head>
 <body>
 	<h1>Nuevo Alumno</h1>
