@@ -55,7 +55,7 @@ function eliminarAlumno(id) {
 	        // Recargar la página para mostrar la lista actualizada de alumnos
 	        location.reload();
 	      },
-	      error: function() {
+	      error: function(){
 	        alert("Ha ocurrido un error al eliminar el alumno.");
 	      }
 	    });

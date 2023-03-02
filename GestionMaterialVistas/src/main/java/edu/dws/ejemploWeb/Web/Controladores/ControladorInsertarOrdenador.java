@@ -50,13 +50,11 @@ public class ControladorInsertarOrdenador {
 			miModelo.put("Mensaje", "Los campos no pueden ser nulos");
 			return new ModelAndView("ordenadorInsertado", "miModelo", miModelo);
 		}else {
+			// LLamamos a la consulta de inserción
 			consulta.insertarUnOrdenador(gestionOrdenadores);
 			miModelo.put("Mensaje", "El ordenador ha sido insertado");
 			return new ModelAndView("ordenadorInsertado", "miModelo", miModelo);
-		}
-		// LLamamos a la consulta de inserción
-
-		}catch(Exception e) {
+		}}catch(Exception e) {
 			System.out.println(e);
 			return null;
 		}

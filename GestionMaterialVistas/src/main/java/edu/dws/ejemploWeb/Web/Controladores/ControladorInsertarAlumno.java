@@ -43,6 +43,7 @@ public class ControladorInsertarAlumno {
 	@RequestMapping(value = "/guardarAlumno", method = RequestMethod.POST)
 	public ModelAndView guardarAlumno(@ModelAttribute("alumnoInsertado") GestionAlumnosDTO alumnoInsertado) {
 		try {
+			
 		// Utilizamos el id del ordenador que hemos añadido en el DTO
 		long id = alumnoInsertado.getId_ordenador();
 
@@ -70,8 +71,7 @@ public class ControladorInsertarAlumno {
 			consulta.insertarUnaMatricula(gestionAlumnos);
 			miModelo.put("Mensaje", "El alumno ha sido insertado");
 			return new ModelAndView("alumnoInsertado", "miModelo", miModelo);
-		}
-		}catch(Exception e) {
+		}}catch(Exception e) {
 			System.out.println(e);
 			return null;
 		}
