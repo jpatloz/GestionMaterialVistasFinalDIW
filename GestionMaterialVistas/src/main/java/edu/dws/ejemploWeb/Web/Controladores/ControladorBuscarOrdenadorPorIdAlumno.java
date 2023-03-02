@@ -1,5 +1,8 @@
 package edu.dws.ejemploWeb.Web.Controladores;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +25,9 @@ public class ControladorBuscarOrdenadorPorIdAlumno {
 	// Inyectamos el servicio
 	@Autowired
 	Consultas consulta;
+	
+	// Creamos un map para almacenar la clave ordenadores y en el valor la lista de ordenadores
+	Map<String, Object> miModelo = new HashMap<String, Object>();
 
 	ADaoServicioImpl aDao = new ADaoServicioImpl();
 	GestionOrdenadoresTODTO aDto = new GestionOrdenadoresTODTO();
@@ -30,6 +36,9 @@ public class ControladorBuscarOrdenadorPorIdAlumno {
 	@RequestMapping(value = "/guardarOrdenadorPorIdAlumno", method = RequestMethod.POST)
 	public ModelAndView guardarPcPorIdAlumno(@ModelAttribute("id") GestionAlumnosDTO id, Model model) {
 
+		try {
+			
+		
 		// Pasamos a dao
 		GestionAlumnos gestionAlumnos = aDao.GestionAlumnosDTOADAO(id);
 
@@ -37,8 +46,19 @@ public class ControladorBuscarOrdenadorPorIdAlumno {
 		GestionOrdenadores gestionOrdenadores = consulta.buscarOrdenadorPorIdAlumno(gestionAlumnos.getId_alumno());
 
 		// Una vez recogida la información, pasamos a DTO para enviarlo a la vista
-		GestionOrdenadoresDTO gestionOrdenadoresDTO = aDto.gestionOrdenadoresTODTO(gestionOrdenadores);
-		model.addAttribute("ordenador", gestionOrdenadoresDTO);
-		return new ModelAndView("ordenadorEncontrado");
+		if(gestionOrdenadores == null) {
+			miModelo.put("Mensaje", "El id no pertenece a ningún alumno");
+			return new ModelAndView("alumnoEncontrado", "miModelo", miModelo);
+		}else {
+			GestionOrdenadoresDTO gestionOrdenadoresDTO = aDto.gestionOrdenadoresTODTO(gestionOrdenadores);
+			model.addAttribute("ordenador", gestionOrdenadoresDTO);
+			miModelo.put("Mensaje", "El ordenador ha sido encontrado");
+			return new ModelAndView("ordenadorEncontrado", "miModelo", miModelo);
+		}
+
+		}catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 }

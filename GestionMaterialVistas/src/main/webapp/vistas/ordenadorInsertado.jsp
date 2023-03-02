@@ -3,10 +3,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ordenador Insertado</title>
+<title></title>
 </head>
 <body>
-	<h1>Ordenador insertado con exito</h1>
+	<h1> Mensaje del controlador: <c:out value="${miModelo.Mensaje}" /></h1>
 
 	<br>
 	<br>

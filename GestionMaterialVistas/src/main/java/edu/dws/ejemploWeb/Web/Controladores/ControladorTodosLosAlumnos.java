@@ -40,17 +40,29 @@ public class ControladorTodosLosAlumnos {
 	@RequestMapping(value = "/buscarTodosLosAlumnos", method = RequestMethod.GET)
 	public ModelAndView buscarTodosLosAlumnos() {
 
+		try {
 		// Creamos una lista de alumnos
 		ArrayList<GestionAlumnosDTO> listaGestionAlumnos = (ArrayList<GestionAlumnosDTO>) consulta.buscarAlumnos();
 		miModelo.put("alumnos", listaGestionAlumnos);
 		return new ModelAndView("buscarTodosLosAlumnos", "miModelo", miModelo);
+		}catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 
 	@RequestMapping(value = "/eliminarAlumno")
 	public ModelAndView eliminarAlumno(@RequestParam long id_alumno) {// Usamos el RequestParam para parametrizar el id
-
+		
+		try {
+			
 		// LLamamos a la consulta para eliminar por id
 		consulta.eliminarUnAlumno(id_alumno);
-		return new ModelAndView("buscarTodosLosAlumnos");
+		miModelo.put("Mensaje", "El alumno ha sido borrado");
+		return new ModelAndView("buscarTodosLosAlumnos", "miModelo", miModelo);
+		}catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 }

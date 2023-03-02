@@ -14,6 +14,12 @@
 	<p>${ordenador.modelo}</p>
 	<b>Marca: </b>
 	<p>${ordenador.marca}</p>
+	<br>
+	<br>
+		<p>
+            Mensaje del controlador: 
+            <c:out value="${miModelo.Mensaje}" />
+        </p>
 
 	<br>
 	<br>

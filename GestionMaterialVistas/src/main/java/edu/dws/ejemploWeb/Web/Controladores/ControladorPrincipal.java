@@ -1,5 +1,8 @@
 package edu.dws.ejemploWeb.Web.Controladores;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +17,7 @@ import edu.dws.ejemploWeb.aplicacion.DTO.GestionOrdenadoresDTO;
 
 @Controller
 public class ControladorPrincipal {
-
+	
 	// Formulario para insertar alumnos
 	@RequestMapping(value = "/insertarAlumnos")
 	public String insertarAlumnos(Model modelo) {

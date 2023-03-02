@@ -14,6 +14,12 @@
 	
 	<br>
 	<br>
+		<p>
+            Mensaje del controlador: 
+            <c:out value="${miModelo.Mensaje}" />
+        </p>
+	<br>
+	<br>
 	<button type="button" onclick="history.back()">Volver</button>
 </body>
 </html>
