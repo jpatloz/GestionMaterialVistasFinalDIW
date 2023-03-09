@@ -12,6 +12,8 @@ import edu.dws.ejemploWeb.aplicacion.dal.GestionAlumnos;
 import edu.dws.ejemploWeb.aplicacion.dal.GestionAlumnosServicios;
 import edu.dws.ejemploWeb.aplicacion.dal.GestionOrdenadores;
 import edu.dws.ejemploWeb.aplicacion.dal.GestionOrdenadoresServicios;
+import edu.dws.ejemploWeb.aplicacion.dal.Usuario;
+import edu.dws.ejemploWeb.aplicacion.dal.UsuarioServicios;
 
 
 @Service
@@ -31,7 +33,7 @@ public class Consultas{
 		
 		public void insertarUnaMatricula(GestionAlumnos gestionAlumnos) {
 			try {
-			gas.save(gestionAlumnos);
+				gas.save(gestionAlumnos);
 			}catch(Exception e) {
 				System.out.println(e);
 			}

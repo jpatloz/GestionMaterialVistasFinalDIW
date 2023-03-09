@@ -2,6 +2,7 @@ package edu.dws.ejemploWeb.aplicacion.DTO;
 
 import edu.dws.ejemploWeb.aplicacion.dal.GestionAlumnos;
 import edu.dws.ejemploWeb.aplicacion.dal.GestionOrdenadores;
+import edu.dws.ejemploWeb.aplicacion.dal.Usuario;
 
 /*
  * Clase que implementa los metodos de nuestra interfaz aDao 
@@ -27,10 +28,23 @@ public class ADaoServicioImpl implements ADaoServicio {
 			gestionOrdenadores.setId_ordenador(gestionOrdenadoresDTO.getId_ordenador());
 			gestionOrdenadores.setMd_date(gestionOrdenadoresDTO.getMd_date());
 			gestionOrdenadores.setMarca(gestionOrdenadoresDTO.getMarca());
-			;
 			gestionOrdenadores.setModelo(gestionOrdenadoresDTO.getModelo());
 		}
 		return gestionOrdenadores;
+	}
+
+	public Usuario UsuariosDTOADAO(UsuarioDTO usuarioDTO){
+		Usuario usuario = new Usuario();
+		if(usuarioDTO != null) {
+			usuario.setId(usuarioDTO.getId());
+			usuario.setNombre(usuarioDTO.getNombre());
+			usuario.setApellidos(usuarioDTO.getApellidos());
+			usuario.setEmail(usuarioDTO.getEmail());
+			usuario.setNombreUsuario(usuarioDTO.getNombreUsuario());
+			usuario.setPassword(usuarioDTO.getPassword());
+			usuario.setRol(usuarioDTO.getRol());
+		}
+		return usuario;
 	}
 
 }

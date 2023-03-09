@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.dws.ejemploWeb.aplicacion.DTO.GestionAlumnosDTO;
 import edu.dws.ejemploWeb.aplicacion.DTO.GestionOrdenadoresDTO;
+import edu.dws.ejemploWeb.aplicacion.DTO.UsuarioDTO;
 
 /*
  * En este controlador se definirán todas las vistas redirigidas por el index
@@ -17,6 +18,27 @@ import edu.dws.ejemploWeb.aplicacion.DTO.GestionOrdenadoresDTO;
 
 @Controller
 public class ControladorPrincipal {
+	
+	// Formulario de registro
+	@RequestMapping(value = "/registro")
+	public String registro(Model modelo) {
+
+		// Creamos una instancia de alumnos DTO
+		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		modelo.addAttribute("usuarioInsertado", usuarioDTO);
+		return "registro";
+	}
+	
+	// Formulario de registro
+		@RequestMapping(value = "/login")
+		public String login(Model modelo) {
+
+			// Creamos una instancia de alumnos DTO
+			UsuarioDTO usuarioDTO = new UsuarioDTO();
+			modelo.addAttribute("usuarioLogueado", usuarioDTO);
+			return "login";
+		}
+	
 	
 	// Formulario para insertar alumnos
 	@RequestMapping(value = "/insertarAlumnos")
